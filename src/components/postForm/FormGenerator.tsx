@@ -2,9 +2,9 @@ import React from 'react';
 import CreatePostForm, { CreatePostFormProps } from './CreateForm';
 import { schema } from '../../schemas/validationSchema';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
-import PostData from '../../types/postData';
 import InputElement from './elements/InputElement';
 import TextAreaElement from './elements/TextAreaElement';
+import PostData from '../../types/postData';
 
 const FormGenerator: React.FC = () => {
     const handleSuccess = () => {

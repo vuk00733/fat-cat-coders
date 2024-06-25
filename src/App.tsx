@@ -4,8 +4,8 @@ import { Landing } from './components/landing/Landing';
 import { UserList } from './components/UserList';
 import FormGenerator from './components/postForm/FormGenerator';
 import PageGenerator from './components/dynamicForm/PageGenerator';
-import TabSelector from './components/TabSelector';
 import { TAB_NAMES } from './types/tabs';
+import TabSelector from './components/baseComponents/TabSelector';
 
 function App() {
     const [selectedTab, setSelectedTab] = useState<TAB_NAMES>(

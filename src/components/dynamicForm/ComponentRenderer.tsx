@@ -1,26 +1,45 @@
 import React, { FC, ReactElement } from 'react';
-import { Layout } from '../Layout';
-import { Button } from '../Button';
-import { Hero } from '../Hero';
-import { Cards } from '../Cards';
-import { ItemsShowcase } from '../ItemsShowcase';
-import { PanelShowcase } from '../PanelShowcase';
-import { TrustBar } from '../TrustBar';
+import { Layout } from '../baseComponents/Layout';
+import { Button } from '../baseComponents/Button';
+import { ItemsShowcase } from '../baseComponents/ItemsShowcase';
+import { PanelShowcase } from '../baseComponents/PanelShowcase';
+import { TrustBar } from '../baseComponents/TrustBar';
 import { UserList } from '../UserList';
+import { Cards } from '../baseComponents/Cards';
+import { Hero } from '../baseComponents/Hero';
 
 interface ComponentRendererProps {
     type: string;
     props: any;
+    components?: ComponentProps[];
+}
+
+interface ComponentProps {
+    type: string;
+    props: any;
+    components?: ComponentProps[];
 }
 
 const ComponentRenderer: FC<ComponentRendererProps> = ({
     type,
     props,
+    components,
 }): ReactElement | null => {
     try {
         switch (type) {
             case 'layoutSection':
-                return <Layout {...props} />;
+                return (
+                    <Layout {...props}>
+                        {components?.map((component, idx) => (
+                            <ComponentRenderer
+                                key={idx}
+                                type={component.type}
+                                props={component.props}
+                                components={component.components}
+                            />
+                        ))}
+                    </Layout>
+                );
             case 'componentButton':
                 return <Button {...props} />;
             case 'componentHero':

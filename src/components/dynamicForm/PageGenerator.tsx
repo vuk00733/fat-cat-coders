@@ -1,6 +1,5 @@
 import React from 'react';
 import DynamicPage from './DynamicPage';
-import { ComponentType } from '../../types/dynamicForm';
 
 const data = [
     {
@@ -26,13 +25,23 @@ const data = [
             },
         ],
     },
+
+    {
+        type: 'componentHero',
+        props: {
+            title: 'Hero title',
+            image: [
+                'https://images.unsplash.com/photo-1617854818583-09e7f077a156?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            ],
+        },
+    },
 ];
 
 const PageGenerator: React.FC = () => {
     return (
-        <div>
+        <React.Fragment>
             <DynamicPage data={data} />
-        </div>
+        </React.Fragment>
     );
 };
 

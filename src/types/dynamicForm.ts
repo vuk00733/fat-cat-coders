@@ -1,11 +1,11 @@
-import { ButtonProps } from '../components/Button';
-import { CardsProps } from '../components/Cards';
-import { HeroProps } from '../components/Hero';
-import { ItemsShowcaseProps } from '../components/ItemsShowcase';
-import { LayoutProps } from '../components/Layout';
-import { PanelShowcaseProps } from '../components/PanelShowcase';
-import { TrustBarProps } from '../components/TrustBar';
 import { UserListProps } from '../components/UserList';
+import { ButtonProps } from '../components/baseComponents/Button';
+import { CardsProps } from '../components/baseComponents/Cards';
+import { HeroProps } from '../components/baseComponents/Hero';
+import { ItemsShowcaseProps } from '../components/baseComponents/ItemsShowcase';
+import { LayoutProps } from '../components/baseComponents/Layout';
+import { PanelShowcaseProps } from '../components/baseComponents/PanelShowcase';
+import { TrustBarProps } from '../components/baseComponents/TrustBar';
 
 export type ComponentType =
     | 'layoutSection'
