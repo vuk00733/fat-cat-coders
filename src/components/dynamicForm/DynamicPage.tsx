@@ -1,5 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import ComponentRenderer from './ComponentRenderer';
+import { ComponentType } from '../../types/dynamicForm';
 
 interface ComponentProps {
     type: string;
@@ -20,11 +21,11 @@ const DynamicPage: FC<DynamicPageProps> = ({ data }): ReactElement => {
     return (
         <div>
             {data.map((section, index) => (
-                <div
-                    key={index}
-                    className={`section ${section.type}`}
-                    style={section.props}
-                >
+                <div key={index} className={`section ${section.type}`}>
+                    <ComponentRenderer
+                        type={section.type}
+                        props={section.props}
+                    />
                     {section.components?.map((component, idx) => (
                         <div
                             key={idx}

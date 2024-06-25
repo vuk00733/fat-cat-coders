@@ -7,5 +7,9 @@ export interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children, background }) => {
-    return <section className={clsx('py-20', background)}>{children}</section>;
+    return (
+        <section className={clsx('py-20', `bg-${background}`)}>
+            {children}
+        </section>
+    );
 };
