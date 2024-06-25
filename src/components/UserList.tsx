@@ -3,7 +3,9 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchUsers } from '../api/api';
 import User from '../types/user';
 
-const UserList: React.FC = () => {
+export interface UserListProps {}
+
+export const UserList: React.FC<UserListProps> = () => {
     const { data, error, isLoading } = useQuery<Array<User>, Error>({
         queryKey: ['users'],
         queryFn: fetchUsers,
@@ -38,5 +40,3 @@ const UserList: React.FC = () => {
         </div>
     );
 };
-
-export default UserList;

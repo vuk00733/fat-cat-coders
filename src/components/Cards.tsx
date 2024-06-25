@@ -11,8 +11,8 @@ interface CardProps {
     buttonText: string;
 }
 
-interface CardsProps {
-    cards: CardProps[];
+export interface CardsProps {
+    cards: Array<CardProps>;
 }
 
 export const Cards: React.FC<CardsProps> = ({ cards }) => {

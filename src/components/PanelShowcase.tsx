@@ -7,7 +7,7 @@ interface PanelItem {
     image: string;
 }
 
-interface PanelShowcaseProps {
+export interface PanelShowcaseProps {
     items: Array<PanelItem>;
 }
 

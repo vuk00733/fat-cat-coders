@@ -1,7 +1,7 @@
 import React from 'react';
 import Marquee from 'react-fast-marquee';
 
-interface TrustBarProps {
+export interface TrustBarProps {
     images: Array<string>;
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface HeroProps {
+export interface HeroProps {
     title: string;
     image: string;
 }
