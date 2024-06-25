@@ -1,19 +1,9 @@
 import React, { FC, ReactElement } from 'react';
 import ComponentRenderer from './ComponentRenderer';
-
-interface ComponentProps {
-    type: string;
-    props: any;
-}
-
-interface SectionProps {
-    type: string;
-    props: any;
-    components?: ComponentProps[];
-}
+import { Component } from '../../types/dynamicForm';
 
 interface DynamicPageProps {
-    data: SectionProps[];
+    data: Array<Component>;
 }
 
 const DynamicPage: FC<DynamicPageProps> = ({ data }): ReactElement => {

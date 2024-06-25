@@ -1,5 +1,6 @@
 import React from 'react';
 import DynamicPage from './DynamicPage';
+import { Component } from '../../types/dynamicForm';
 
 const data = [
     {
@@ -40,7 +41,7 @@ const data = [
 const PageGenerator: React.FC = () => {
     return (
         <React.Fragment>
-            <DynamicPage data={data} />
+            <DynamicPage data={data as Array<Component>} />
         </React.Fragment>
     );
 };
