@@ -1,26 +1,38 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
+import { useForm, UseFormRegister, FieldErrors } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ZodSchema } from 'zod';
 import { useCreatePost } from '../../hooks/useCreatePostMutation';
-import { schema } from '../../schemas/validationSchema';
 import clsx from 'clsx';
 
-type CreatePostFormProps = {
+export type CreatePostFormProps = {
     onSuccess: () => void;
+    schema: ZodSchema;
+    renderForm: (
+        register: UseFormRegister<any>,
+        errors: FieldErrors<any>
+    ) => React.ReactNode;
 };
 
-const CreatePostForm: React.FC<CreatePostFormProps> = ({ onSuccess }) => {
+const CreatePostForm: React.FC<CreatePostFormProps> = ({
+    onSuccess,
+    schema,
+    renderForm,
+}) => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
-    } = useForm({ resolver: zodResolver(schema) });
+        formState: { errors, isValid },
+    } = useForm({ resolver: zodResolver(schema), mode: 'onChange' });
 
     const { mutate } = useCreatePost();
 
     const onSubmit = async (data: any) => {
+        if (!isValid) {
+            return;
+        }
         try {
-            await mutate(data);
+            mutate(data);
             onSuccess();
         } catch (error) {
             console.error('Error creating post:', error);
@@ -32,70 +44,17 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onSuccess }) => {
             onSubmit={handleSubmit(onSubmit)}
             className="max-w-lg mx-auto p-6 border-2 border-blue-500 rounded-lg shadow-lg"
         >
-            <div className="mb-4">
-                <label htmlFor="title" className="block text-gray-700">
-                    Title
-                </label>
-                <input
-                    id="title"
-                    {...register('title')}
-                    className={clsx(
-                        'border',
-                        'border-gray40',
-                        'text-gray-900',
-                        'text-sm',
-                        'rounded-lg',
-                        'focus:ring-black',
-                        'focus:border-black',
-                        'block',
-                        'w-full',
-                        'p-2.5',
-                        'border-2',
-                        'focus:outline-none'
-                    )}
-                />
-                {errors.title && (
-                    <p className={clsx('text-mainRed', 'text-sm', 'mt-1')}>
-                        {(errors.title as any)?.message}
-                    </p>
-                )}
-            </div>
-            <div className="mb-4">
-                <label htmlFor="body" className="block text-gray-700">
-                    Body
-                </label>
-                <textarea
-                    id="body"
-                    {...register('body')}
-                    className={clsx(
-                        'border',
-                        'border-gray40',
-                        'text-gray-900',
-                        'text-sm',
-                        'rounded-lg',
-                        'focus:ring-black',
-                        'focus:border-black',
-                        'block',
-                        'w-full',
-                        'p-2.5',
-                        'border-2',
-                        'focus:outline-none'
-                    )}
-                />
-                {errors.body && (
-                    <p className={clsx('text-mainRed', 'text-sm', 'mt-1')}>
-                        {(errors.body as any)?.message}
-                    </p>
-                )}
-            </div>
+            {renderForm(register, errors)}
             <button
                 type="submit"
+                disabled={!isValid}
                 className={clsx(
                     'rounded-lg',
                     'px-4',
                     'py-2',
                     'bg-black',
-                    'text-white'
+                    'text-white',
+                    !isValid && 'opacity-50 cursor-not-allowed'
                 )}
             >
                 Submit

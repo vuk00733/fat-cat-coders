@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { LandingCard } from '../../types/landing/LandingCard';
+import { LandingCard } from '../../types/LandingCard';
 
 export const Card: React.FC<LandingCard> = ({ title, text, link }) => (
     <div

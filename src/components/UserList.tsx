@@ -1,16 +1,10 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { User, userSchema } from '../schemas/user';
-import { z } from 'zod';
-
-const fetchUsers = async (): Promise<Array<User>> => {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
-    const data = await response.json();
-    return z.array(userSchema).parse(data);
-};
+import { fetchUsers } from '../api/api';
+import User from '../types/user';
 
 const UserList: React.FC = () => {
-    const { data, error, isLoading } = useQuery<User[], Error>({
+    const { data, error, isLoading } = useQuery<Array<User>, Error>({
         queryKey: ['users'],
         queryFn: fetchUsers,
     });
