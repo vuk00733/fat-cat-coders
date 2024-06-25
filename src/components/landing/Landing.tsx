@@ -1,11 +1,13 @@
+import React from 'react';
 import clsx from 'clsx';
+import { Card } from './Card';
+import { LandingCard } from '../../types/landing/LandingCard';
 
-import { Card } from './Card.jsx';
-
-// eslint-disable-next-line no-undef
 const vscodeProjectLink = `vscode://file/${__CWD__}`;
 
-const cards = [
+interface LandingProps {}
+
+const cards: Array<LandingCard> = [
     {
         title: 'Transfer the project to TypeScript',
         text: 'Your first task involves transitioning this project from JavaScript to TypeScript.',
@@ -18,7 +20,7 @@ const cards = [
     },
     {
         title: 'Create a Form Generator Component',
-        text: 'Build a versatile React component with validation, API hook, and form rendering capabilities. ',
+        text: 'Build a versatile React component with validation, API hook, and form rendering capabilities.',
         link: vscodeProjectLink,
     },
     {
@@ -28,7 +30,7 @@ const cards = [
     },
 ];
 
-export const Landing = () => {
+export const Landing: React.FC<LandingProps> = () => {
     return (
         <section
             className={clsx(
