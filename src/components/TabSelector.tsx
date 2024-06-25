@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
+import { TAB_NAMES } from '../types/tabs';
 
 interface TabSelectorProps {
-    selectedTab: string;
-    setSelectedTab: React.Dispatch<React.SetStateAction<string>>;
+    selectedTab: TAB_NAMES;
+    setSelectedTab: React.Dispatch<React.SetStateAction<TAB_NAMES>>;
 }
 
 const TabSelector: React.FC<TabSelectorProps> = ({
     selectedTab,
     setSelectedTab,
 }) => {
-    const handleTabClick = (tabName: string) => {
+    const handleTabClick = (tabName: TAB_NAMES) => {
         setSelectedTab(tabName);
     };
 
     return (
         <div className="flex justify-center mt-8">
             <button
-                onClick={() => handleTabClick('Landing')}
+                onClick={() => handleTabClick(TAB_NAMES.LANDING)}
                 className={`${
-                    selectedTab === 'Landing'
+                    selectedTab === TAB_NAMES.LANDING
                         ? 'bg-black text-white'
                         : 'bg-gray-200'
                 } hover:bg-blue-400 text-sm px-4 py-2 mx-1 rounded-md focus:outline-none`}
@@ -26,9 +27,9 @@ const TabSelector: React.FC<TabSelectorProps> = ({
                 Landing
             </button>
             <button
-                onClick={() => handleTabClick('UserList')}
+                onClick={() => handleTabClick(TAB_NAMES.USER_LIST)}
                 className={`${
-                    selectedTab === 'UserList'
+                    selectedTab === TAB_NAMES.USER_LIST
                         ? 'bg-black text-white'
                         : 'bg-gray-200'
                 } hover:bg-blue-400 text-sm px-4 py-2 mx-1 rounded-md focus:outline-none`}
@@ -36,9 +37,9 @@ const TabSelector: React.FC<TabSelectorProps> = ({
                 User List
             </button>
             <button
-                onClick={() => handleTabClick('FormGenerator')}
+                onClick={() => handleTabClick(TAB_NAMES.FORM_GENERATOR)}
                 className={`${
-                    selectedTab === 'FormGenerator'
+                    selectedTab === TAB_NAMES.FORM_GENERATOR
                         ? 'bg-black text-white'
                         : 'bg-gray-200'
                 } hover:bg-blue-400 text-sm px-4 py-2 mx-1 rounded-md focus:outline-none`}
@@ -46,9 +47,9 @@ const TabSelector: React.FC<TabSelectorProps> = ({
                 Form Generator
             </button>
             <button
-                onClick={() => handleTabClick('PageGenerator')}
+                onClick={() => handleTabClick(TAB_NAMES.PAGE_GENERATOR)}
                 className={`${
-                    selectedTab === 'PageGenerator'
+                    selectedTab === TAB_NAMES.PAGE_GENERATOR
                         ? 'bg-black text-white'
                         : 'bg-gray-200'
                 } hover:bg-blue-400 text-sm px-4 py-2 mx-1 rounded-md focus:outline-none`}

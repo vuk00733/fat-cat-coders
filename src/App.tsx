@@ -5,19 +5,22 @@ import { UserList } from './components/UserList';
 import FormGenerator from './components/postForm/FormGenerator';
 import PageGenerator from './components/dynamicForm/PageGenerator';
 import TabSelector from './components/TabSelector';
+import { TAB_NAMES } from './types/tabs';
 
 function App() {
-    const [selectedTab, setSelectedTab] = useState<string>('PageGenerator');
+    const [selectedTab, setSelectedTab] = useState<TAB_NAMES>(
+        TAB_NAMES.LANDING
+    );
 
     const renderComponent = () => {
         switch (selectedTab) {
-            case 'Landing':
+            case TAB_NAMES.LANDING:
                 return <Landing />;
-            case 'UserList':
+            case TAB_NAMES.USER_LIST:
                 return <UserList />;
-            case 'FormGenerator':
+            case TAB_NAMES.FORM_GENERATOR:
                 return <FormGenerator />;
-            case 'PageGenerator':
+            case TAB_NAMES.PAGE_GENERATOR:
             default:
                 return <PageGenerator />;
         }
