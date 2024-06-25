@@ -2,20 +2,13 @@ import React from 'react';
 import CreatePostForm, { CreatePostFormProps } from './CreateForm';
 import { schema } from '../../schemas/validationSchema';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
-import useFormData from '../../hooks/useFormData';
 import PostData from '../../types/postData';
+import InputElement from './elements/InputElement';
+import TextAreaElement from './elements/TextAreaElement';
 
 const FormGenerator: React.FC = () => {
     const handleSuccess = () => {
         alert('Post created successfully!');
-    };
-
-    const renderForm = (
-        register: UseFormRegister<PostData>,
-        errors: FieldErrors<PostData>
-    ) => {
-        const { renderForm } = useFormData({ register, errors });
-        return renderForm();
     };
 
     return (
@@ -33,3 +26,23 @@ const FormGenerator: React.FC = () => {
 };
 
 export default FormGenerator;
+
+const renderForm = (
+    register: UseFormRegister<PostData>,
+    errors: FieldErrors<PostData>
+) => (
+    <React.Fragment>
+        <InputElement
+            id="title"
+            label="Title"
+            register={register('title')}
+            error={errors.title}
+        />
+        <TextAreaElement
+            id="body"
+            label="Body"
+            register={register('body')}
+            error={errors.body}
+        />
+    </React.Fragment>
+);
