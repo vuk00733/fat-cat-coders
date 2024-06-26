@@ -1,6 +1,6 @@
+import { createPost } from '@api/api';
 import { useMutation } from '@tanstack/react-query';
-import { createPost } from '../api/api';
-import PostData from '../types/postData';
+import PostData from '@type/postData';
 
 export const useCreatePost = () => {
     return useMutation({

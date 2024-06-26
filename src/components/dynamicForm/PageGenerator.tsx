@@ -1,6 +1,6 @@
 import React from 'react';
 import DynamicPage from './DynamicPage';
-import { Component } from '../../types/dynamicForm';
+import { Component } from '@type/dynamicForm';
 
 const data = [
     {

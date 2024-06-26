@@ -1,5 +1,5 @@
-import PostData from '../types/postData';
-import User from '../types/user';
+import PostData from '@type/postData';
+import User from '@type/user';
 
 export const createPost = async (postData: PostData) => {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts', {

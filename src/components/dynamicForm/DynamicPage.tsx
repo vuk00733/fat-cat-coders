@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import ComponentRenderer from './ComponentRenderer';
-import { Component } from '../../types/dynamicForm';
+import { Component } from '@type/dynamicForm';
 
 interface DynamicPageProps {
     data: Array<Component>;

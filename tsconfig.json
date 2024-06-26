@@ -9,6 +9,16 @@
         "noImplicitAny": true,
         "strictNullChecks": true,
         "noImplicitThis": true,
-        "skipLibCheck": true
-    }
+        "skipLibCheck": true,
+        "baseUrl": "./src",
+        "paths": {
+            "@components/*": ["./components/*"],
+            "@hooks/*": ["./hooks/*"],
+            "@schemas/*": ["./schemas/*"],
+            "@type/*": ["./type/*"],
+            "@api/*": ["./api/*"]
+        },
+        "moduleResolution": "node"
+    },
+    "include": ["src"]
 }

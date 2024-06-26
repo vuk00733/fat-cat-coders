@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { TAB_NAMES } from '../../types/tabs';
+import { TAB_NAMES } from '@type/tabs';
+import React from 'react';
 
 interface TabSelectorProps {
     selectedTab: TAB_NAMES;

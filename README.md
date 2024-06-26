@@ -131,7 +131,7 @@ const data = [
 ];
 ```
 
-The supported types of ui elements are : provided /types/dynamicForm.ts and are the following :
+The supported types of ui elements are : provided /type/dynamicForm.ts and are the following :
 
 ```ts
 export type ComponentType =

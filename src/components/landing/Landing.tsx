@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Card } from './Card';
-import { LandingCard } from '../../types/landingCard';
+import { LandingCard } from '@type/landingCard';
 
 const vscodeProjectLink = `vscode://file/${__CWD__}`;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchUsers } from '../api/api';
-import User from '../types/user';
+import User from '@type/user';
+import { fetchUsers } from '@api/api';
 
 export interface UserListProps {}
 

@@ -1,12 +1,12 @@
 import React, { FC, ReactElement } from 'react';
-import { Layout } from '../baseComponents/Layout';
-import { Button } from '../baseComponents/Button';
-import { ItemsShowcase } from '../baseComponents/ItemsShowcase';
-import { PanelShowcase } from '../baseComponents/PanelShowcase';
-import { TrustBar } from '../baseComponents/TrustBar';
-import { UserList } from '../UserList';
-import { Cards } from '../baseComponents/Cards';
-import { Hero } from '../baseComponents/Hero';
+import { Hero } from '@components/baseComponents/Hero';
+import { Layout } from '@components/baseComponents/Layout';
+import { Button } from '@components/baseComponents/Button';
+import { Cards } from '@components/baseComponents/Cards';
+import { ItemsShowcase } from '@components/baseComponents/ItemsShowcase';
+import { PanelShowcase } from '@components/baseComponents/PanelShowcase';
+import { TrustBar } from '@components/baseComponents/TrustBar';
+import { UserList } from '@components/UserList';
 
 interface ComponentRendererProps {
     type: string;

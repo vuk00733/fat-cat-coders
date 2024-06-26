@@ -1,11 +1,11 @@
 import './styles.css';
 import React, { useState } from 'react';
-import { Landing } from './components/landing/Landing';
-import { UserList } from './components/UserList';
-import FormGenerator from './components/postForm/FormGenerator';
-import PageGenerator from './components/dynamicForm/PageGenerator';
-import { TAB_NAMES } from './types/tabs';
-import TabSelector from './components/baseComponents/TabSelector';
+import { UserList } from '@components/UserList';
+import TabSelector from '@components/baseComponents/TabSelector';
+import PageGenerator from '@components/dynamicForm/PageGenerator';
+import { Landing } from '@components/landing/Landing';
+import FormGenerator from '@components/postForm/FormGenerator';
+import { TAB_NAMES } from '@type/tabs';
 
 function App() {
     const [selectedTab, setSelectedTab] = useState<TAB_NAMES>(
