@@ -14,6 +14,7 @@ export default {
             mainYellow: '#FFCC00',
             mainRed: '#F97F88',
             red: '#F97F88',
+            blue: '##0000FF',
             white: '#FFFFFF',
             black: '#01082D',
             gray80: '#343957',

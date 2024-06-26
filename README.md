@@ -1,144 +1,152 @@
-## Complete the following tasks
+# FCC Homework App README
 
-### Transfer the project to TypeScript
+Welcome to FCC Homework application. This README will guide you through the steps to set up and run the application locally.
 
-Your first task involves transitioning this project 
-from JavaScript to TypeScript. To ensure a robust 
-and type-safe codebase, please configure TypeScript
-with the following compiler options:
-* "noImplicitAny": true
-* "strict": true
-* "strictNullChecks": true
-* "noImplicitThis": true
+## Getting Started
 
-Additionally, implement import aliases in your project
-configuration. Set up your imports to use the format
-***@homework-task/path/to/file.ts***.
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-In the ***src/components*** folder, you will find several
-components. Your goal is to enhance these components with
-appropriate TypeScript interfaces and types.
+### Prerequisites
 
-### Create a List Component
+Ensure you have Node.js and npm installed on your machine. You can download them from [Node.js](https://nodejs.org/).
 
-Develop a React component that is both scalable and reusable,
-designed to fetch and display data from an API in a list
-format. The specific API endpoint to be used is
-https://jsonplaceholder.typicode.com/users. For each item 
-in the list, ensure that the following keys are displayed:
-***id***, ***name***, ***email***, ***dateOfBirth***, and ***phone***.
+### Installation
 
+1. **Clone the repository**:
 
-### Create a Form Generator Component
+    ```sh
+    git clone https://github.com/vuk00733/fat-cat-coders.git
+    cd fat-cat-coders
 
-1. Develop a scalable and reusable React component with the
-following capabilities:
+    ```
 
-* **Validation Schema:** Accept a validation schema prop to ensure form data adheres to specified rules.
-* **API Hook Call:** Incorporate an API hook that handles states such as data, isLoading, and isError.
-* **Callback Function for Form Rendering:** Implement a callback function prop (renderForm) that renders the form elements and handles their state appropriately.
+2. **Install the dependencies**:
 
-2. Component Implementation:
-* Utilize this component to create a form with two fields:
-  * Input Field (‘title’): A required field with a maximum character limit.
-  * Textarea Field (‘body’): Also a required field with a maximum character limit.
-* Both fields should display error messages if the input doesn't meet the criteria set by the validation schema.
-* For form submissions, use the POST method at https://jsonplaceholder.typicode.com/posts.
+    ```sh
+    npm install
 
-Recommended libraries, but you can use whatever you prefer:
-* ***React Query:*** For handling API calls.
-* ***Zod:*** For defining the validation schema.
-* ***React Hook Form:*** For managing form state, submission, and logic.
+    ```
 
-Alternatively, you're free to use any library or custom solution that aligns with the above requirements.
+3. **Run the server**:
+    ```sh
+    npm run dev
+    ```
 
-Component Example **(this does not have to be the exact implementation)**:
+The server will be availble on http://localhost:3000.
 
-```tsx
-<CreateForm<ICreateCycleFormInputs>
-    useMutation={useSomeMutation}
-    validationSchema={someSchema}
-    successMessage="Successfully created something"
-    renderForm={({ register, errors }) => (
-        <>
-            <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="name"
-                label="Name"
-                error={!!errors.name}
-                helperText={errors.name?.message}
-                autoFocus
-                {...register('name')}
-            />
-        </>
-    )}
-/>
+### Using the application
+
+When the app is opened the user will see a landing page with 4 tabs to be selected at the top of the screen.
+
+The first tab is a landing page provided by the FCC Homework App creators.
+
+![landing](https://github.com/vuk00733/fat-cat-coders/assets/60270183/6bb503a2-d703-4370-be4d-ce3b30fb5eba)
+
+The second tab will represnt the first assigmnet of the app "UsersList" component.
+
+![users](https://github.com/vuk00733/fat-cat-coders/assets/60270183/e265b103-14ce-4ed7-9407-370341c50e22)
+
+The third tab will be the "ThePostGenerator" component. This component has customizable features in the application code. For starters the forms validation is set to:
+
+```ts
+export const schema = z.object({
+    title: z
+        .string()
+        .min(1, { message: 'Title is required' })
+        .max(5, { message: 'Title should not exceed 5 characters' }),
+    body: z
+        .string()
+        .min(1, { message: 'Body is required' })
+        .max(20, { message: 'Body should not exceed 20 characters' }),
+});
 ```
 
+This example does the validation in the form of min and max characters. The user can customize this object in the validationSchema.ts file to change the required validation.
 
-### Create a Page Generator Component
-Your task is to create a reusable React component for
-building web pages. This component should be designed 
-to handle a variety of page layouts and components 
-dynamically, based on the props it receives.
-* ***Dynamic Layout Handling:*** The component must handle different page layouts.
-* ***Scalability and Reusability:*** It should be easily scalable to accommodate future layout types and be reusable across different pages.
-* ***Prop Structure:*** The main prop is an array of objects, each representing a section of the page with its own layout and components.
-  * Each object in this array contains:
-    * type: identifying the layout type.
-    * components: an array of objects, each describing a component to be rendered in this section.
-    * props: properties specific to that layout (ex. background color)
-  * Each component object has:
-    * type: the type of the component (e.g., 'componentHero').
-    * props: properties specific to that component.
+![posts](https://github.com/vuk00733/fat-cat-coders/assets/60270183/cf78c511-25a2-46a3-aedf-43296c44c015)
 
-You can use the components provided in src/components. If you desire, you can 
-add your own components or change the existing ones.
-
-Here is an example of the props that the component should accept:
+The fourth tab will be the "DynamicPageGenerator" component. This component also has customizable features in the code. The entry point of the component is PageGenerator.tsx file. In this file the user can change the data object to customize the created web page by the component.
 
 ```ts
 const data = [
     {
         type: 'layoutSection',
-        props: { ...layoutProps},
+        props: { background: 'mainRed' },
         components: [
             {
-                type: 'componentHero',
-                props: {...componentProps},
-            },
-        ],
-    },
-    {
-        type: 'layoutSection',
-        props: { ...layoutProps},
-        components: [
-            {
-                type: 'componentItemsShowcase',
-                props: {...componentProps},
+                type: 'componentButton',
+                props: {
+                    children: 'Click Me',
+                    onClick: () => {
+                        alert('Button clicked!');
+                    },
+                },
             },
             {
                 type: 'componentTrustBar',
-                props: {...componentProps},
+                props: {
+                    images: [
+                        'https://images.unsplash.com/photo-1617854818583-09e7f077a156?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                    ],
+                },
             },
         ],
     },
+
+    {
+        type: 'componentHero',
+        props: {
+            title: 'Hero title',
+            image: [
+                'https://images.unsplash.com/photo-1617854818583-09e7f077a156?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            ],
+        },
+    },
 ];
 
+const data = [
+    {
+        type: 'componentItemsShowcase',
+        props: {
+            items: [
+                {
+                    title: 'ItemsShowcase Title',
+                    description: 'ItemsShowcase Description',
+                },
+            ],
+        },
+    },
+];
+
+const data = [
+    {
+        type: 'componentHero',
+        props: {
+            title: 'Hero title',
+            image: [
+                'https://images.unsplash.com/photo-1617854818583-09e7f077a156?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            ],
+        },
+    },
+];
 ```
 
-### Additional Requirements
-You will have to complete all of these for your task to be considered done.
+The supported types of ui elements are : provided /type/dynamicForm.ts and are the following :
 
-* Follow the eslint and prettier rules set by the project; you must not use any ts-ignore or disable eslint.
-* It must contain a Readme.md file that has instructions on how to run the project as well as a brief explanation of how you have implemented these features. In the project, there is already a Readme.md file present feel free to override it completely.
-* Your code must follow the latest rules and conventions
-* You have to have checks for typescript and eslint that disallow you to commit any changes that cause errors.
-* There should be no TypeScript or Eslint errors in your code.
-* Feel free to add your own touch to these tasks
-* Keep in mind that you will have to expand upon this solution in the technical interview
+```ts
+export type ComponentType =
+    | 'layoutSection'
+    | 'componentButton'
+    | 'componentHero'
+    | 'componentCards'
+    | 'componentItemsShowcase'
+    | 'componentPanelShowcase'
+    | 'componentTrustBar'
+    | 'componentUserList';
+```
 
+Each of the components accepts a specific prop object which is defined in each component respecitvely in the src/component/baseComponets folder.
 
-### Note: You can override this document
+![pages](https://github.com/vuk00733/fat-cat-coders/assets/60270183/d80a9a67-2ef4-4939-912c-b7161b03bc4c)
+
+Important note here is that only 'layoutSection' component type can accept multiple components in the components field of the main object. This is the only supported recursive component renderer availble.
