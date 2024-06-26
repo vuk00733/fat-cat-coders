@@ -15,8 +15,8 @@ Ensure you have Node.js and npm installed on your machine. You can download them
 1. **Clone the repository**:
 
     ```sh
-    git clone https://github.com/vuk00733/fat-cat-coders.git
-    cd fat-cat-coders
+    git clone https://github.com/vuk00733/vuk-ivanovic-fatcat-task.git
+    cd vuk-ivanovic-fatcat-task
 
     ```
 
