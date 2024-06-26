@@ -1,26 +1,21 @@
 import React, { FC, ReactElement } from 'react';
-import { Hero } from '@components/baseComponents/Hero';
-import { Layout } from '@components/baseComponents/Layout';
-import { Button } from '@components/baseComponents/Button';
-import { Cards } from '@components/baseComponents/Cards';
-import { ItemsShowcase } from '@components/baseComponents/ItemsShowcase';
-import { PanelShowcase } from '@components/baseComponents/PanelShowcase';
-import { TrustBar } from '@components/baseComponents/TrustBar';
-import { UserList } from '@components/UserList';
+import { Hero, HeroProps } from '@components/baseComponents/Hero';
+import { UserList, UserListProps } from '@components/UserList';
+import { Button, ButtonProps } from '@components/baseComponents/Button';
+import { Cards, CardsProps } from '@components/baseComponents/Cards';
+import {
+    ItemsShowcase,
+    ItemsShowcaseProps,
+} from '@components/baseComponents/ItemsShowcase';
+import { Layout, LayoutProps } from '@components/baseComponents/Layout';
+import {
+    PanelShowcase,
+    PanelShowcaseProps,
+} from '@components/baseComponents/PanelShowcase';
+import { TrustBar, TrustBarProps } from '@components/baseComponents/TrustBar';
+import { Component } from '@type/dynamicForm';
 
-interface ComponentRendererProps {
-    type: string;
-    props: any;
-    components?: ComponentProps[];
-}
-
-interface ComponentProps {
-    type: string;
-    props: any;
-    components?: ComponentProps[];
-}
-
-const ComponentRenderer: FC<ComponentRendererProps> = ({
+const ComponentRenderer: FC<Component> = ({
     type,
     props,
     components,
@@ -29,7 +24,7 @@ const ComponentRenderer: FC<ComponentRendererProps> = ({
         switch (type) {
             case 'layoutSection':
                 return (
-                    <Layout {...props}>
+                    <Layout {...(props as LayoutProps)}>
                         {components?.map((component, idx) => (
                             <ComponentRenderer
                                 key={idx}
@@ -41,19 +36,19 @@ const ComponentRenderer: FC<ComponentRendererProps> = ({
                     </Layout>
                 );
             case 'componentButton':
-                return <Button {...props} />;
+                return <Button {...(props as ButtonProps)} />;
             case 'componentHero':
-                return <Hero {...props} />;
+                return <Hero {...(props as HeroProps)} />;
             case 'componentCards':
-                return <Cards {...props} />;
+                return <Cards {...(props as CardsProps)} />;
             case 'componentItemsShowcase':
-                return <ItemsShowcase {...props} />;
+                return <ItemsShowcase {...(props as ItemsShowcaseProps)} />;
             case 'componentPanelShowcase':
-                return <PanelShowcase {...props} />;
+                return <PanelShowcase {...(props as PanelShowcaseProps)} />;
             case 'componentTrustBar':
-                return <TrustBar {...props} />;
+                return <TrustBar {...(props as TrustBarProps)} />;
             case 'componentUserList':
-                return <UserList {...props} />;
+                return <UserList {...(props as UserListProps)} />;
             default:
                 console.warn(`Unsupported component type: ${type}`);
                 return null;
