@@ -40,7 +40,11 @@ When the app is opened the user will see a landing page with 4 tabs to be select
 
 The first tab is a landing page provided by the FCC Homework App creators.
 
+![landing](https://github.com/vuk00733/fat-cat-coders/assets/60270183/6bb503a2-d703-4370-be4d-ce3b30fb5eba)
+
 The second tab will represnt the first assigmnet of the app "UsersList" component.
+
+![users](https://github.com/vuk00733/fat-cat-coders/assets/60270183/e265b103-14ce-4ed7-9407-370341c50e22)
 
 The third tab will be the "ThePostGenerator" component. This component has customizable features in the application code. For starters the forms validation is set to:
 
@@ -58,6 +62,8 @@ export const schema = z.object({
 ```
 
 This example does the validation in the form of min and max characters. The user can customize this object in the validationSchema.ts file to change the required validation.
+
+![posts](https://github.com/vuk00733/fat-cat-coders/assets/60270183/cf78c511-25a2-46a3-aedf-43296c44c015)
 
 The fourth tab will be the "DynamicPageGenerator" component. This component also has customizable features in the code. The entry point of the component is PageGenerator.tsx file. In this file the user can change the data object to customize the created web page by the component.
 
@@ -140,5 +146,7 @@ export type ComponentType =
 ```
 
 Each of the components accepts a specific prop object which is defined in each component respecitvely in the src/component/baseComponets folder.
+
+![pages](https://github.com/vuk00733/fat-cat-coders/assets/60270183/d80a9a67-2ef4-4939-912c-b7161b03bc4c)
 
 Important note here is that only 'layoutSection' component type can accept multiple components in the components field of the main object. This is the only supported recursive component renderer availble.
